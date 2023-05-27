@@ -1,0 +1,1 @@
+web: gumicorn django_todo.wsgi :application
