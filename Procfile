@@ -1,1 +1,1 @@
-web: gumicorn django_todo.wsgi :application
+web: gumicorn django_todo.wsgi:application
