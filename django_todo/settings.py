@@ -16,6 +16,8 @@ if os.path.isfile("env.py"):
     import env
 
 from pathlib import Path
+import dj_database_url
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -87,8 +89,7 @@ WSGI_APPLICATION = 'django_todo.wsgi.application'
 # }
 
 DATABASES = {
-     os.environ.get("DATABASE_URL")
-     #'default': dj_database_url.parse('postgres://empxomos:O_bemOc24LiXsXva_fSJlEMHwHcOUCgp@trumpet.db.elephantsql.com/empxomos')
+   'default': dj_database_url.parse('postgres://postgres://empxomos:O_bemOc24LiXsXva_fSJlEMHwHcOUCgp@trumpet.db.elephantsql.com/empxomos')
 }
 
 # Password validation
