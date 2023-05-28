@@ -13,12 +13,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 import dj_database_url
 
-# if os.path.isfile("env.py"):
-#     import env
-
-# from pathlib import Path
-# import dj_database_url
-
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 # BASE_DIR = Path(__file__).resolve().parent.parent
@@ -29,12 +23,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-ia(f7r#(8=))6#-pds0bwwmrl&j9r3=*+z^$z+kte^k@iyv^(q'
+# SECRET_KEY = 'django-insecure-ia(f7r#(8=))6#-pds0bwwmrl&j9r3=*+z^$z+kte^k@iyv^(q'
+
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-ia(f7r#(8=))6#-pds0bwwmrl&j9r3=*+z^$z+kte^k@iyv^(q')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['todo5-app.herokuapp.com']
+# ALLOWED_HOSTS = ['todo5-app.herokuapp.com']
+ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME')]
 
 
 # Application definition
@@ -90,8 +87,11 @@ WSGI_APPLICATION = 'django_todo.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#    'default': dj_database_url.parse('postgres://empxomos:O_bemOc24LiXsXva_fSJlEMHwHcOUCgp@trumpet.db.elephantsql.com/empxomos')
+# }
 DATABASES = {
-   'default': dj_database_url.parse('postgres://empxomos:O_bemOc24LiXsXva_fSJlEMHwHcOUCgp@trumpet.db.elephantsql.com/empxomos')
+    'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
 }
 
 # Password validation
